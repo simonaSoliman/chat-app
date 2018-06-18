@@ -17,6 +17,7 @@ we should use token to get current user data and use login and logout functional
 but now we will use static data to test it easily:
 
 1- open mongobooster interface or operting system terminal and insert to Chatapp database users:
+
 /*-----------------------------------------------------------------*/
 db.users.insert([
 {
@@ -64,13 +65,16 @@ db.users.insert([
 	]
 }
 ])
+
 2- after inserting data take the first user Id and paste it at line 34
 src/app/component/app.component.ts
+
 3-then add this user id at api, beacause we should send token from front end
 to the api to resolve id issue
 at line 9 and 46 of api api/controllers/chatAppController.js
 
 then it will workes well
+
 /*-----------------------------------------------------------------*/
 
 
@@ -78,9 +82,7 @@ then it will workes well
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##for api open it and run npm install
 
 
 
