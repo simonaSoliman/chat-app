@@ -1,6 +1,78 @@
 # ChatApp
+Simple chat app for connecting users together
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+#tools
+framwork angular 5 
+nodejs
+materlize css for design
+mongoose for database
+and another packages listed at package.json files
+
+##Features
+1- can get contacts of current user
+2- start chat with one contact
+3- get chat history of current chat
+
+we should use token to get current user data and use login and logout functionality 
+but now we will use static data to test it easily:
+
+1- open mongobooster interface or operting system terminal and insert to Chatapp database users:
+/*-----------------------------------------------------------------*/
+db.users.insert([
+{
+	"updatedAt" : ISODate("2018-06-19T13:27:17.656+02:00"),
+	"createdAt" : ISODate("2018-06-19T13:27:17.656+02:00"),
+	"name" : "user1user",
+	"email" : "user1@user.com",
+	"active" : true,
+	"contacts" : [
+		//write here ids of rest users that he can connect like: ObjectId("5b1f7aa507eaef167c51ac95"),
+		
+	]
+},
+
+{
+	"updatedAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"createdAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"name" : "user2user",
+	"email" : "user2@user.com",
+	"active" : true,
+	"contacts" : [
+	//write here id of first user
+	]
+},
+
+{
+	"updatedAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"createdAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"name" : "user3user",
+	"email" : "user3@user.com",
+	"active" : true,
+	"contacts" : [
+	//write here id of first user
+	]
+},
+
+{
+	"updatedAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"createdAt" : ISODate("2018-06-19T13:28:17.656+02:00"),
+	"name" : "user4user",
+	"email" : "user4@user.com",
+	"active" : true,
+	"contacts" : [
+	//write here id of first user
+	]
+}
+])
+2- after inserting data take the first user Id and paste it at line 34
+src/app/component/app.component.ts
+3-then add this user id at api, beacause we should send token from front end
+to the api to resolve id issue
+at line 9 and 46 of api api/controllers/chatAppController.js
+
+then it will workes well
+/*-----------------------------------------------------------------*/
+
 
 ## Development server
 
@@ -10,18 +82,5 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
