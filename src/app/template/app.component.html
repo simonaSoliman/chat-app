@@ -1,0 +1,95 @@
+<div class="container teal darken-1" style="width:90%;">
+  <div class="row">
+    <form class="col s12">
+      <div class="col s2">
+        <div>
+            <div class="card white">
+              <div class="card-content black-text" style="height: 470px;">
+               <span class="card-title" style="    margin-left: -8px;">Contacts</span> 
+                <ul class="collection">
+                  <li class="collection-item" style="padding-left:9px;" *ngFor="let contact of Contacts" (click) ="open_chat(contact)"><a style="cursor: pointer;">
+                      <img src="../../1.jpg" alt="" class="circle">
+                      <span class="title"> {{contact.name}} </span>
+                      <p style="font-size: 10px;">{{contact.email}} <br>
+                      </p>
+                      <a (click)="add_favourite($event)" class="secondary-content"><i class="material-icons">grade</i></a>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a href="#" style="font-size: font-size: 12px;"><i class="tiny material-icons">add</i>New Friend</a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col s10" *ngIf="current_contact.name" >
+        <div>
+          <div class="col s12 m12">
+            <div class="card grey lighten-3">
+              <div  class="card-content black-text" style="height: 412px;">
+                <span class="card-title" style=" margin-left: -8px;"> chat with {{this.current_contact.name}}</span>
+                <!--List of chat History-->
+                <div *ngFor="let msg of list_of_messages">
+                  <div  class="row" style="padding: 7px;">
+                    <div class="col s12">
+                      <div class="card white">
+                        <div class="card-content black-text" style="padding: 7px;">
+                          <p>sender message</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div  class="row" style="margin-left: 0px;">
+                    <div class="col s12">
+                      <div class="card  teal lighten-1">
+                        <div class="card-content black-text" style="padding: 7px;">
+                          <p>reciver message</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div  *ngIf="message" class="row" style="padding: 7px;">
+                  <div class="col s12">
+                    <div class="card white">
+                      <div class="card-content black-text" style="padding: 7px;">
+                        <p>{{message}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-action">
+                <a (click)="file_clicked($event.target.files)" style="cursor: pointer;"><i class="material-icons">attachment</i><input style="display:none;" type="file" id="file_upload" (change)="handleFileInput($event.target.files)">
+                </a>
+                    
+                <a (click)="send_message()" style="cursor: pointer;"><i class="material-icons" >send</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="message" name="message" [(ngModel)]="current_message.message" type="text" >
+            <label for="message" placeholder="Type Your message here!"></label>
+          </div>
+        </div>
+      </div>
+      <div class="col s10" *ngIf="!current_contact.name" >
+          <div class="col s12 m12">
+            <div class="card grey lighten-3">
+              <div  class="card-content black-text" style="height: 541px;">
+               <!-- <img src="./chatopia.jpg">
+                <span>Enjoy chating service with chatopia </span> -->
+                
+              </div>
+            </div>
+          </div>
+      </div>
+      
+    </form>
+  </div>       
+</div>
+
+
